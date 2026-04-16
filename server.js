@@ -8,7 +8,6 @@ const baseDist = path.join(__dirname, 'dist');
 
 let distPath;
 
-// pega automaticamente a pasta dentro de dist (ex: app)
 const subDirs = fs.readdirSync(baseDist);
 
 if (subDirs.length > 0) {
@@ -22,7 +21,8 @@ console.log('Usando pasta:', distPath);
 
 app.use(express.static(distPath));
 
-app.get('*', (req, res) => {
+// ⚡ FIX AQUI
+app.use((req, res) => {
   res.sendFile(path.join(distPath, 'index.html'));
 });
 
