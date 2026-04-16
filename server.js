@@ -1,29 +1,24 @@
 const express = require('express');
 const path = require('path');
+const fs = require('fs');
 
 const app = express();
 
-// tenta múltiplos caminhos
-const possiblePaths = [
-  'dist/app/browser',
-  'dist/browser',
-  'dist'
-];
+const baseDist = path.join(__dirname, 'dist');
 
 let distPath;
 
-for (const p of possiblePaths) {
-  const fullPath = path.join(__dirname, p);
-  if (require('fs').existsSync(fullPath)) {
-    distPath = fullPath;
-    break;
-  }
-}
+// pega automaticamente a pasta dentro de dist (ex: app)
+const subDirs = fs.readdirSync(baseDist);
 
-if (!distPath) {
-  console.error('Nenhuma pasta dist encontrada!');
+if (subDirs.length > 0) {
+  distPath = path.join(baseDist, subDirs[0], 'browser');
+} else {
+  console.error('Nenhuma pasta dentro de dist encontrada!');
   process.exit(1);
 }
+
+console.log('Usando pasta:', distPath);
 
 app.use(express.static(distPath));
 
