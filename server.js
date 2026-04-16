@@ -3,7 +3,27 @@ const path = require('path');
 
 const app = express();
 
-const distPath = path.join(__dirname, 'dist/app/browser');
+// tenta múltiplos caminhos
+const possiblePaths = [
+  'dist/app/browser',
+  'dist/browser',
+  'dist'
+];
+
+let distPath;
+
+for (const p of possiblePaths) {
+  const fullPath = path.join(__dirname, p);
+  if (require('fs').existsSync(fullPath)) {
+    distPath = fullPath;
+    break;
+  }
+}
+
+if (!distPath) {
+  console.error('Nenhuma pasta dist encontrada!');
+  process.exit(1);
+}
 
 app.use(express.static(distPath));
 
