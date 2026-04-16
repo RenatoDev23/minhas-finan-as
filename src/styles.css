@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap');
+@import "tailwindcss";
+
+:root {
+  --primary-hex: #4CAF50;
+  --primary-container-hex: #1B331B;
+  --on-primary-container-hex: #81C784;
+  --background-hex: #000000;
+  --surface-hex: #0A0A0A;
+
+  /* Fixed Status Colors (Independent of Theme) */
+  --status-success: #4CAF50;
+  --status-warning: #FF8C00;
+  --status-error: #FF3B30;
+}
+
+.theme-positive {
+  --primary-hex: #4CAF50;
+  --primary-rgb: 76, 175, 80;
+  --primary-container-hex: #1B331B;
+  --on-primary-container-hex: #81C784;
+  --secondary-hex: #81C784;
+  --background-hex: #000000;
+  --surface-hex: #0A0A0A;
+}
+
+.theme-warning {
+  --primary-hex: #FF8C00;
+  --primary-rgb: 255, 140, 0;
+  --primary-container-hex: #4D2A00;
+  --on-primary-container-hex: #FFB347;
+  --secondary-hex: #FFB347;
+  --background-hex: #050300;
+  --surface-hex: #0F0A00;
+}
+
+.theme-negative {
+  --primary-hex: #FF3B30;
+  --primary-rgb: 255, 59, 48;
+  --primary-container-hex: #600000;
+  --on-primary-container-hex: #FFB4AB;
+  --secondary-hex: #FFB4AB;
+  --background-hex: #1A0000;
+  --surface-hex: #2D0000;
+}
+
+@theme {
+  --font-headline: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-label: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  --color-primary: var(--primary-hex);
+  --color-on-primary: #000000;
+  --color-primary-container: var(--primary-container-hex);
+  --color-on-primary-container: var(--on-primary-container-hex);
+  
+  --color-secondary: var(--secondary-hex);
+  --color-on-secondary: #000000;
+  --color-secondary-container: color-mix(in srgb, var(--secondary-hex), black 60%);
+  --color-on-secondary-container: color-mix(in srgb, var(--secondary-hex), white 40%);
+
+  --color-tertiary: #FFD700;
+  --color-on-tertiary: #000000;
+  --color-tertiary-container: #4D4100;
+  --color-on-tertiary-container: #FFE066;
+
+  --color-error: #FF4500;
+  --color-on-error: #FFFFFF;
+  --color-error-container: #802200;
+  --color-on-error-container: #FFB399;
+
+  --color-background: var(--background-hex);
+  --color-on-background: #FFFFFF;
+
+  --color-surface: var(--surface-hex);
+  --color-on-surface: #FFFFFF;
+  --color-surface-variant: color-mix(in srgb, var(--surface-hex), white 10%);
+  --color-on-surface-variant: #E0E0E0;
+
+  --color-surface-container-lowest: var(--background-hex);
+  --color-surface-container-low: color-mix(in srgb, var(--surface-hex), white 2%);
+  --color-surface-container: color-mix(in srgb, var(--surface-hex), white 5%);
+  --color-surface-container-high: color-mix(in srgb, var(--surface-hex), white 10%);
+  --color-surface-container-highest: color-mix(in srgb, var(--surface-hex), white 15%);
+
+  --color-outline: #4D4D4D;
+  --color-outline-variant: color-mix(in srgb, var(--primary-hex), transparent 80%);
+
+  --radius-xl: 0.75rem;
+  --radius-2xl: 1rem;
+  --radius-3xl: 1.5rem;
+}
+
+@layer base {
+  body {
+    @apply bg-background text-on-background font-body antialiased;
+  }
+
+  select option, select optgroup {
+    @apply bg-surface-container-high text-on-surface;
+  }
+}
+
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+.glass-panel {
+  background: color-mix(in srgb, var(--surface-hex), transparent 40%);
+  backdrop-filter: blur(20px);
+}
+
+.primary-gradient {
+  background: linear-gradient(135deg, var(--primary-hex) 0%, var(--primary-container-hex) 100%);
+}
