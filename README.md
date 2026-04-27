@@ -6,7 +6,7 @@
 
 This contains everything you need to run your app locally.
 
-View your app in AI Studio: https://ai.studio/apps/7598b97f-c677-485f-a70a-ededea9862bf
+Ver o sistema : https://minhas-finan-as.onrender.com/login
 
 ## Run Locally
 
